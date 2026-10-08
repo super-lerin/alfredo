@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alfredo Augusto | Terapeuta Especializado em Dependência Química</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontsource-inter@5.0.0/index.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  :root {
+    --bg-dark: #0a0e1a;
+    --bg-darker: #050810;
+    --blue-primary: #4a90e2;
+    --blue-light: #6bb6ff;
+    --gold: #d4af37;
+    --gold-light: #f0d97a;
+    --text-light: #e8e8e8;
+    --text-muted: #8a95a5;
+    --accent: #1e3a5f;
+  }
+
+  html { scroll-behavior: smooth; }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: var(--bg-darker); }
+  ::-webkit-scrollbar-thumb { background: var(--blue-primary); border-radius: 4px; }
+
+  /* Navigation */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(10, 14, 26, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(74, 144, 226, 0.1);
+    transition: all 0.4s ease;
+  }
+
+  nav.scrolled {
+    padding: 15px 60px;
+    background: rgba(5, 8, 16, 0.95);
+  }
+
+  .logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--blue-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    padding: 10px 24px;
+    background: linear-gradient(135deg, var(--blue-primary), var(--blue-light));
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(74, 144, 226, 0.3);
+  }
+
+  .nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(74, 144, 226, 0.5);
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  .menu-toggle span {
+    width: 25px;
+    height: 2px;
+    background: var(--text-light);
+    transition: all 0.3s;
+  }
+
+  /* Hero Section */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 60px 60px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 20% 50%, rgba(74, 144, 226, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 60% 80%, rgba(74, 144, 226, 0.1) 0%, transparent 50%);
+    animation: bgPulse 8s ease-in-out infinite;
+  }
+
+  @keyframes bgPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  .particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--blue-light);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: float linear infinite;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.6; }
+    100% { transform: translateY(-10vh) translateX(100px); opacity: 0; }
+  }
+
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-text {
+    animation: slideInLeft 1s ease-out;
+  }
+
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(74, 144, 226, 0.1);
+    border: 1px solid rgba(74, 144, 226, 0.3);
+    border-radius: 30px;
+    font-size: 0.85rem;
+    color: var(--blue-light);
+    margin-bottom: 24px;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(74, 144, 226, 0); }
+  }
+
+  .hero-badge .dot {
+    width: 8px;
+    height: 8px;
+    background: #4ade80;
+    border-radius: 50%;
+    animation: blink 1.5s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -2px;
+  }
+
+  .hero h1 .line1 {
+    display: block;
+    color: var(--text-light);
+  }
+
+  .hero h1 .line2 {
+    display: block;
+    background: linear-gradient(135deg, var(--blue-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    max-width: 500px;
+  }
+
+  .hero-cta-group {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    padding: 16px 32px;
+    background: linear-gradient(135deg, var(--blue-primary), var(--blue-light));
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 30px rgba(74, 144, 226, 0.4);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(74, 144, 226, 0.6);
+  }
+
+  .btn-secondary {
+    padding: 16px 32px;
+    background: transparent;
+    border: 2px solid rgba(212, 175, 55, 0.5);
+    border-radius: 50px;
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: var(--gold);
+    transform: translateY(-3px);
+  }
+
+  /* Yin Yang Animation */
+  .hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideInRight 1s ease-out;
+  }
+
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .yin-yang-container {
+    position: relative;
+    width: 450px;
+    height: 450px;
+  }
+
+  .yin-yang {
+    width: 100%;
+    height: 100%;
+    animation: rotateYinYang 20s linear infinite;
+    filter: drop-shadow(0 0 40px rgba(74, 144, 226, 0.3));
+  }
+
+  @keyframes rotateYinYang {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .hands-container {
+    position: absolute;
+    inset: -20px;
+    animation: breathe 4s ease-in-out infinite;
+  }
+
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  .orbit {
+    position: absolute;
+    border: 1px solid rgba(74, 144, 226, 0.2);
+    border-radius: 50%;
+    animation: orbit 15s linear infinite;
+  }
+
+  .orbit-1 { inset: -40px; }
+  .orbit-2 { inset: -80px; animation-duration: 20s; animation-direction: reverse; }
+  .orbit-3 { inset: -120px; animation-duration: 25s; }
+
+  @keyframes orbit {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .orbit-dot {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--gold);
+    border-radius: 50%;
+    top: 50%;
+    left: -5px;
+    box-shadow: 0 0 20px var(--gold);
+  }
+
+  .hero-quote {
+    position: absolute;
+    bottom: 40px;
+    right: 0;
+    font-style: italic;
+    color: var(--gold-light);
+    font-size: 1.1rem;
+    border-left: 3px solid var(--gold);
+    padding-left: 16px;
+    animation: fadeInUp 1s ease-out 0.5s both;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Section Styles */
+  section {
+    padding: 100px 60px;
+    position: relative;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .section-tag {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 20px;
+    color: var(--gold);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+
+  .section-title span {
+    background: linear-gradient(135deg, var(--blue-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-subtitle {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* About Section */
+  .about {
+    background: linear-gradient(180deg, var(--bg-dark), var(--bg-darker));
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .about-image {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, var(--accent), var(--bg-darker));
+  }
+
+  .about-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(74, 144, 226, 0.2), rgba(212, 175, 55, 0.1));
+    z-index: 1;
+  }
+
+  .about-image-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+  }
+
+  .about-image svg {
+    width: 200px;
+    height: 200px;
+    opacity: 0.3;
+    animation: rotateYinYang 30s linear infinite;
+  }
+
+  .about-image-text {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    z-index: 2;
+  }
+
+  .about-image-text h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  .about-image-text h3 span {
+    display: block;
+    color: var(--blue-light);
+  }
+
+  .about-image-text p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+    letter-spacing: 1px;
+  }
+
+  .about-content h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+
+  .about-content p {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .stat {
+    padding: 24px;
+    background: rgba(74, 144, 226, 0.05);
+    border: 1px solid rgba(74, 144, 226, 0.15);
+    border-radius: 16px;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  .stat:hover {
+    transform: translateY(-5px);
+    border-color: var(--blue-primary);
+    background: rgba(74, 144, 226, 0.1);
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--blue-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* Services Section */
+  .services {
+    background: var(--bg-darker);
+    position: relative;
+  }
+
+  .services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--blue-primary), transparent);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .service-card {
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(30, 58, 95, 0.3), rgba(10, 14, 26, 0.5));
+    border: 1px solid rgba(74, 144, 226, 0.15);
+    border-radius: 20px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(74, 144, 226, 0.1), transparent);
+    transition: left 0.6s ease;
+  }
+
+  .service-card:hover::before { left: 100%; }
+
+  .service-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--blue-primary);
+    box-shadow: 0 20px 60px rgba(74, 144, 226, 0.2);
+  }
+
+  .service-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--blue-primary), var(--blue-light));
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+  }
+
+  .service-card:hover .service-icon {
+    transform: rotate(10deg) scale(1.1);
+    box-shadow: 0 10px 30px rgba(74, 144, 226, 0.4);
+  }
+
+  .service-card h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .service-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .service-tag {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 4px 12px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
+    color: var(--gold);
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  /* Approach Section */
+  .approach {
+    background: var(--bg-dark);
+    text-align: center;
+  }
+
+  .approach-quote {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 800;
+    font-style: italic;
+    line-height: 1.2;
+    max-width: 900px;
+    margin: 0 auto 40px;
+    background: linear-gradient(135deg, var(--text-light), var(--blue-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+  }
+
+  .approach-quote::before,
+  .approach-quote::after {
+    content: '"';
+    font-size: 6rem;
+    position: absolute;
+    color: var(--gold);
+    opacity: 0.3;
+    font-family: Georgia, serif;
+  }
+
+  .approach-quote::before {
+    top: -40px;
+    left: -40px;
+  }
+
+  .approach-quote::after {
+    bottom: -80px;
+    right: -40px;
+  }
+
+  .approach-author {
+    color: var(--gold);
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .approach-divider {
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue-primary), var(--gold));
+    margin: 40px auto;
+    border-radius: 2px;
+  }
+
+  .approach-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .feature {
+    padding: 30px;
+    text-align: center;
+  }
+
+  .feature-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--blue-primary);
+    opacity: 0.3;
+    margin-bottom: 16px;
+  }
+
+  .feature h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--gold-light);
+  }
+
+  .feature p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  /* Contact Section */
+  .contact {
+    background: linear-gradient(135deg, var(--bg-darker), var(--accent));
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(74, 144, 226, 0.2), transparent 70%);
+    border-radius: 50%;
+  }
+
+  .contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .contact-info h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    line-height: 1.1;
+  }
+
+  .contact-info h2 span {
+    background: linear-gradient(135deg, var(--blue-light), var(--gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .contact-info p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 32px;
+  }
+
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact-method {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .contact-method:hover {
+    background: rgba(74, 144, 226, 0.1);
+    border-color: var(--blue-primary);
+    transform: translateX(10px);
+  }
+
+  .contact-method-icon {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--blue-primary), var(--blue-light));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+  }
+
+  .contact-method-text {
+    flex: 1;
+  }
+
+  .contact-method-text strong {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+  }
+
+  .contact-method-text span {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  .contact-form {
+    padding: 40px;
+    background: rgba(10, 14, 26, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(74, 144, 226, 0.2);
+    border-radius: 24px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-light);
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: var(--text-light);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--blue-primary);
+    background: rgba(74, 144, 226, 0.05);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+  }
+
+  .form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .form-submit {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--blue-primary), var(--blue-light));
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 30px rgba(74, 144, 226, 0.3);
+  }
+
+  .form-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(74, 144, 226, 0.5);
+  }
+
+  /* Footer */
+  footer {
+    background: var(--bg-darker);
+    padding: 60px 60px 30px;
+    border-top: 1px solid rgba(74, 144, 226, 0.1);
+  }
+
+  .footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 40px;
+  }
+
+  .footer-brand .logo {
+    font-size: 1.6rem;
+    margin-bottom: 16px;
+    display: inline-block;
+  }
+
+  .footer-brand p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    max-width: 300px;
+  }
+
+  .footer-col h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--gold);
+  }
+
+  .footer-col ul {
+    list-style: none;
+  }
+
+  .footer-col ul li {
+    margin-bottom: 12px;
+  }
+
+  .footer-col ul a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+  }
+
+  .footer-col ul a:hover { color: var(--blue-light); }
+
+  .footer-bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 12px;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .social-link:hover {
+    background: var(--blue-primary);
+    border-color: var(--blue-primary);
+    transform: translateY(-3px);
+  }
+
+  /* Scroll Reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+  }
+
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    nav { padding: 15px 24px; }
+    .nav-links { display: none; }
+    .menu-toggle { display: flex; }
+    
+    .hero { padding: 100px 24px 60px; }
+    .hero-content { grid-template-columns: 1fr; gap: 40px; }
+    .yin-yang-container { width: 300px; height: 300px; }
+    
+    section { padding: 60px 24px; }
+    
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .about-stats { grid-template-columns: 1fr; }
+    
+    .contact-container { grid-template-columns: 1fr; }
+    
+    .footer-content { grid-template-columns: 1fr 1fr; gap: 30px; }
+  }
+
+  @media (max-width: 600px) {
+    .footer-content { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Loading Animation */
+  .loader {
+    position: fixed;
+    inset: 0;
+    background: var(--bg-darker);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+  }
+
+  .loader.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .loader-yin {
+    width: 80px;
+    height: 80px;
+    animation: rotateYinYang 2s linear infinite;
+  }
+</style>
+</head>
+<body>
+
+<!-- Loader -->
+<div class="loader" id="loader">
+  <svg class="loader-yin" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="48" fill="none" stroke="#4a90e2" stroke-width="2"/>
+    <path d="M 50 2 A 48 48 0 0 1 50 98 A 24 24 0 0 1 50 50 A 24 24 0 0 0 50 2" fill="#4a90e2"/>
+    <circle cx="50" cy="26" r="6" fill="#0a0e1a"/>
+    <circle cx="50" cy="74" r="6" fill="#4a90e2"/>
+  </svg>
+</div>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <div class="logo">ALFREDO <span>AUGUSTO</span></div>
+  <ul class="nav-links">
+    <li><a href="#home">Início</a></li>
+    <li><a href="#about">Sobre</a></li>
+    <li><a href="#services">Serviços</a></li>
+    <li><a href="#approach">Abordagem</a></li>
+    <li><a href="#contact">Contato</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Agendar</button>
+  <div class="menu-toggle" id="menuToggle">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="particles" id="particles"></div>
+  
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        <span>São Paulo • Atendimento Online</span>
+      </div>
+      <h1>
+        <span class="line1">Terapeuta</span>
+        <span class="line2">Especializado</span>
+      </h1>
+      <p class="hero-subtitle">
+        Acompanhamento terapêutico em dependência química e jogadores. 
+        Acolhimento, responsabilidade e respeito à história de cada pessoa.
+      </p>
+      <div class="hero-cta-group">
+        <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+          Iniciar Jornada →
+        </button>
+        <button class="btn-secondary" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+          Conhecer Mais
+        </button>
+      </div>
+    </div>
+    
+    <div class="hero-visual">
+      <div class="yin-yang-container">
+        <div class="orbit orbit-1"><div class="orbit-dot"></div></div>
+        <div class="orbit orbit-2"><div class="orbit-dot" style="background:var(--blue-light);box-shadow:0 0 20px var(--blue-light);"></div></div>
+        <div class="orbit orbit-3"><div class="orbit-dot"></div></div>
+        
+        <svg class="yin-yang" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="48" fill="none" stroke="url(#grad1)" stroke-width="1.5" opacity="0.5"/>
+          <path d="M 50 2 A 48 48 0 0 1 50 98 A 24 24 0 0 1 50 50 A 24 24 0 0 0 50 2" fill="url(#grad1)"/>
+          <circle cx="50" cy="26" r="7" fill="#0a0e1a"/>
+          <circle cx="50" cy="74" r="7" fill="#4a90e2"/>
+          <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#4a90e2;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#d4af37;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+        </svg>
+        
+        <div class="hero-quote">
+          Acolher é<br>o primeiro passo.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-image reveal">
+      <div class="about-image-content">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="48" fill="none" stroke="#4a90e2" stroke-width="1"/>
+          <path d="M 50 2 A 48 48 0 0 1 50 98 A 24 24 0 0 1 50 50 A 24 24 0 0 0 50 2" fill="#4a90e2" opacity="0.5"/>
+          <circle cx="50" cy="26" r="6" fill="#0a0e1a"/>
+          <circle cx="50" cy="74" r="6" fill="#4a90e2"/>
+        </svg>
+      </div>
+      <div class="about-image-text">
+        <h3>FICAR<span>LIMPO</span></h3>
+        <p>DEPENDÊNCIA QUÍMICA</p>
+      </div>
+    </div>
+    
+    <div class="about-content reveal">
+      <div class="section-tag">Sobre Mim</div>
+      <h2>Uma jornada de <span style="background:linear-gradient(135deg,#6bb6ff,#d4af37);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">transformação</span> começa com o primeiro passo</h2>
+      <p>
+        Sou <strong>Alfredo Augusto</strong>, terapeuta especializado em dependência química e jogadores. 
+        Meu trabalho é oferecer acompanhamento terapêutico com acolhimento, responsabilidade e respeito à história de cada pessoa.
+      </p>
+      <p>
+        Aqui você encontrará conteúdos sobre dependência química, recuperação, prevenção, saúde mental, 
+        compulsões e tratamento — sempre com o objetivo de orientar quem busca ajuda.
+      </p>
+      
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-number" data-target="500">0</div>
+          <div class="stat-label">Vidas Transformadas</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" data-target="10">0</div>
+          <div class="stat-label">Anos de Experiência</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" data-target="98">0</div>
+          <div class="stat-label">% Satisfação</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="services" id="services">
+  <div class="section-header reveal">
+    <div class="section-tag">Especialidades</div>
+    <h2 class="section-title">Áreas de <span>Atuação</span></h2>
+    <p class="section-subtitle">Abordagem especializada para cada tipo de dependência e compulsão</p>
+  </div>
+  
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon">🧠</div>
+      <h3>Dependência Química</h3>
+      <p>Tratamento especializado para dependência de álcool, drogas e substâncias químicas com abordagem humanizada e personalizada.</p>
+      <span class="service-tag">Álcool & Drogas</span>
+    </div>
+    
+    <div class="service-card reveal">
+      <div class="service-icon">🎰</div>
+      <h3>Jogadores Compulsivos</h3>
+      <p>Acompanhamento terapêutico para pessoas que enfrentam o vício em jogos de azar, apostas e comportamentos compulsivos relacionados.</p>
+      <span class="service-tag">Jogo Patológico</span>
+    </div>
+    
+    <div class="service-card reveal">
+      <div class="service-icon">💚</div>
+      <h3>Saúde Mental</h3>
+      <p>Cuidado integral da saúde mental com foco em ansiedade, depressão e outros transtornos que frequentemente acompanham as dependências.</p>
+      <span class="service-tag">Bem-estar</span>
+    </div>
+    
+    <div class="service-card reveal">
+      <div class="service-icon">👨‍👩‍👧</div>
+      <h3>Apoio Familiar</h3>
+      <p>Orientação e suporte para familiares que convivem com pessoas em processo de dependência, fortalecendo vínculos e promovendo recuperação.</p>
+      <span class="service-tag">Família</span>
+    </div>
+    
+    <div class="service-card reveal">
+      <div class="service-icon">️</div>
+      <h3>Prevenção</h3>
+      <p>Programas de prevenção ao uso de substâncias e comportamentos de risco, com foco em educação e conscientização.</p>
+      <span class="service-tag">Educação</span>
+    </div>
+    
+    <div class="service-card reveal">
+      <div class="service-icon">🔄</div>
+      <h3>Recuperação</h3>
+      <p>Acompanhamento contínuo no processo de recuperação, prevenindo recaídas e fortalecendo a manutenção da abstinência.</p>
+      <span class="service-tag">Longevidade</span>
+    </div>
+  </div>
+</section>
+
+<!-- Approach Section -->
+<section class="approach" id="approach">
+  <div class="reveal">
+    <div class="section-tag">Filosofia</div>
+    <div class="approach-quote">
+      Acolher é o primeiro passo.
+    </div>
+    <div class="approach-author">— Alfredo Augusto</div>
+    <div class="approach-divider"></div>
+  </div>
+  
+  <div class="approach-features">
+    <div class="feature reveal">
+      <div class="feature-number">01</div>
+      <h4>Acolhimento</h4>
+      <p>Espaço seguro e livre de julgamentos para você compartilhar sua história</p>
+    </div>
+    <div class="feature reveal">
+      <div class="feature-number">02</div>
+      <h4>Responsabilidade</h4>
+      <p>Compromisso ético e profissional com seu processo de transformação</p>
+    </div>
+    <div class="feature reveal">
+      <div class="feature-number">03</div>
+      <h4>Respeito</h4>
+      <p>Cada história é única e merece ser tratada com dignidade e cuidado</p>
+    </div>
+    <div class="feature reveal">
+      <div class="feature-number">04</div>
+      <h4>Transformação</h4>
+      <p>Resultados reais através de um processo terapêutico estruturado e humanizado</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact" id="contact">
+  <div class="contact-container">
+    <div class="contact-info reveal">
+      <div class="section-tag">Contato</div>
+      <h2>Precisa <span>conversar?</span></h2>
+      <p>Se você ou alguém da sua família está enfrentando um problema com álcool, drogas ou jogo, buscar ajuda pode ser o primeiro passo para uma mudança real.</p>
+      
+      <div class="contact-methods">
+        <div class="contact-method">
+          <div class="contact-method-icon">📱</div>
+          <div class="contact-method-text">
+            <strong>WhatsApp</strong>
+            <span>Atendimento rápido e humanizado</span>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="contact-method-icon">📧</div>
+          <div class="contact-method-text">
+            <strong>E-mail</strong>
+            <span>contato@alfredoaugusto.com</span>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="contact-method-icon">📍</div>
+          <div class="contact-method-text">
+            <strong>São Paulo</strong>
+            <span>Atendimento presencial e online</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="contact-form reveal">
+      <form id="contactForm">
+        <div class="form-group">
+          <label>Nome completo</label>
+          <input type="text" placeholder="Seu nome" required>
+        </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" placeholder="seu@email.com" required>
+        </div>
+        <div class="form-group">
+          <label>Telefone</label>
+          <input type="tel" placeholder="(11) 99999-9999">
+        </div>
+        <div class="form-group">
+          <label>Mensagem</label>
+          <textarea placeholder="Conte um pouco sobre sua situação..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Enviar Mensagem →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <div class="logo">ALFREDO <span>AUGUSTO</span></div>
+      <p>Terapeuta especializado em dependência química e jogadores. Transformando vidas através do acolhimento.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="#home">Início</a></li>
+        <li><a href="#about">Sobre</a></li>
+        <li><a href="#services">Serviços</a></li>
+        <li><a href="#contact">Contato</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Especialidades</h4>
+      <ul>
+        <li><a href="#">Dependência Química</a></li>
+        <li><a href="#">Jogadores</a></li>
+        <li><a href="#">Saúde Mental</a></li>
+        <li><a href="#">Família</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="#">São Paulo, SP</a></li>
+        <li><a href="#">contato@alfredoaugusto.com</a></li>
+        <li><a href="#">Seg-Sex: 9h-18h</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 Alfredo Augusto. Todos os direitos reservados.</div>
+    <div class="social-links">
+      <a href="#" class="social-link">📘</a>
+      <a href="#" class="social-link">📷</a>
+      <a href="#" class="social-link">▶️</a>
+      <a href="#" class="social-link">💼</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Loader
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+    }, 800);
+  });
+
+  // Particles
+  const particlesContainer = document.getElementById('particles');
+  for (let i = 0; i < 30; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+    particle.style.animationDelay = Math.random() * 10 + 's';
+    particle.style.width = (Math.random() * 4 + 2) + 'px';
+    particle.style.height = particle.style.width;
+    if (Math.random() > 0.5) {
+      particle.style.background = 'var(--gold)';
+    }
+    particlesContainer.appendChild(particle);
+  }
+
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // Scroll reveal
+  const revealElements = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  // Counter animation
+  const statNumbers = document.querySelectorAll('.stat-number');
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = parseInt(entry.target.dataset.target);
+        let current = 0;
+        const increment = target / 60;
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            entry.target.textContent = target + (target === 98 ? '%' : '+');
+            clearInterval(timer);
+          } else {
+            entry.target.textContent = Math.floor(current);
+          }
+        }, 30);
+        counterObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  statNumbers.forEach(el => counterObserver.observe(el));
+
+  // Form submit
+  document.getElementById('contactForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '✓ Mensagem Enviada!';
+    btn.style.background = 'linear-gradient(135deg, #4ade80, #22c55e)';
+    setTimeout(() => {
+      btn.textContent = 'Enviar Mensagem →';
+      btn.style.background = '';
+      e.target.reset();
+    }, 3000);
+  });
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Parallax effect on hero
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const heroVisual = document.querySelector('.hero-visual');
+    if (heroVisual && scrolled < window.innerHeight) {
+      heroVisual.style.transform = `translateY(${scrolled * 0.3}px)`;
+    }
+  });
+
+  // Mouse follow effect on service cards
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(74, 144, 226, 0.15), rgba(30, 58, 95, 0.3))`;
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.background = '';
+    });
+  });
+</script>
+</body>
+</html>
